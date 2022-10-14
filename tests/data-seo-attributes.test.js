@@ -36,6 +36,16 @@ test('there is attributes on each elements', () => {
   expect($fourthElement.getAttribute('data-seo-click-name')).toBe('Links inside second div');
 });
 
+test('there is attributes on the first children of <roll-hover-button>', () => {
+  const $rollHoverButton = document.querySelector('.roll-hover-button > roll-hover-button:first-child');
+  expect($rollHoverButton.children[0].getAttribute('data-seo-click')).toBe('Roll hover button div');
+  expect($rollHoverButton.children[0].getAttribute('data-seo-click-name')).toBe('Roll hover button direct');
+
+  const $rollHoverButtonWithClass = document.querySelector('.roll-hover-button > .my-roll-hover-button');
+  expect($rollHoverButtonWithClass.children[0].getAttribute('data-seo-click')).toBe('Roll hover button div');
+  expect($rollHoverButtonWithClass.children[0].getAttribute('data-seo-click-name')).toBe('Roll hover button with class');
+});
+
 test('there is a custom style displayed to remove pointer-events on the data-seo-click elements', () => {
   expect(document.querySelector('style').textContent).toBe('[data-seo-click] * { pointer-events: none!important; }');
 });
