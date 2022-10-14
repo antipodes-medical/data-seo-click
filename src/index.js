@@ -17,23 +17,36 @@ class DataSeo {
 						const $el = document.querySelector(selector);
 
 						if ($el) {
-							$el.setAttribute('data-seo-click', name);
-							if (element.name) {
-								$el.setAttribute('data-seo-click-name', clickName);
-							}
+							this._addDataAttributes($el, name, element.name ? clickName : null);
 						}
 					});
 				} else {
 					const $el = document.querySelector(element.selector);
 					if ($el) {
-						$el.setAttribute('data-seo-click', name);
-						if (clickName) {
-							$el.setAttribute('data-seo-click-name', clickName);
-						}
+						this._addDataAttributes($el, name, clickName);
 					}
 				}
 			});
 		});
+	}
+
+	/**
+   * Add data attributes to an element.
+   *
+   * @param {HTMLElement} $element
+   * @param {string} click
+   * @param {string} clickName
+   * @private
+   */
+	_addDataAttributes($element, click, clickName) {
+		if ($element.tagName === 'ROLL-HOVER-BUTTON') {
+			$element = $element.children[0];
+		}
+
+		$element.setAttribute('data-seo-click', click);
+		if (clickName) {
+			$element.setAttribute('data-seo-click-name', clickName);
+		}
 	}
 }
 

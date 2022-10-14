@@ -22,5 +22,18 @@
         ]
       }
     ]
+  },
+  {
+    "name": "Roll hover button div",
+    "elements": [
+      {
+        "name": "Roll hover button direct",
+        "selector": ".roll-hover-button > roll-hover-button:first-child"
+      },
+      {
+        "name": "Roll hover button with class",
+        "selector": ".roll-hover-button > .my-roll-hover-button"
+      }
+    ]
   }
 ]
